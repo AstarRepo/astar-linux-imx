@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2022 SomLabs Astar
+ *
+ */
+
+&mipi_dsi {
+        status = "okay";
+
+        panel@0 {
+
+                reg = <0>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&pinctrl_panel_reset>;
+                reset-gpios = <&gpio5 0 GPIO_ACTIVE_LOW>;
+                compatible = "winstar,wf101ktyapmnb0";
+                backlight = <&panel_backlight>;
+                status = "okay";
+    };
+};
+
+&i2c3 {
+        eeprom_panel: eeprom@52 {
+                compatible = "i2c-eeprom", "atmel,24c64";
+ 		pagesize = <32>;
+		address-width = <16>;
+ 		reg = <0x52>;
+        };
+};

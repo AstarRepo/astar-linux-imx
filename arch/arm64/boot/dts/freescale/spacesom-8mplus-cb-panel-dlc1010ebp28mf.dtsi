@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2024 SomLabs Astar
+ *
+ */
+
+
+&mipi_dsi {
+        status = "okay";
+
+        panel@0 {
+                compatible = "dlc,dlc1010ebp28mf";
+                reg = <0>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&pinctrl_panel_reset>;
+                reset-gpios = <&gpio5 0 GPIO_ACTIVE_LOW>;
+                backlight = <&panel_backlight>;
+                status = "okay"; 
+        };
+};
+
+&i2c1 {
+        clock-frequency = <400000>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+        status = "okay";
+
+        edt-ft5x06@38 {
+                compatible = "edt,edt-ft5406";
+                reg = <0x38>;
+                pinctrl-names = "default";
+                pinctrl-0 = <&pinctrl_touch>;
+                interrupt-parent = <&gpio1>;
+                interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
+                reset-gpios = <&gpio1 4 GPIO_ACTIVE_LOW>;
+                touchscreen-size-x = <800>;
+                touchscreen-inverted-x = "true";
+                touchscreen-size-y = <1280>;
+        };
+};
+
+&i2c3 {
+        eeprom_panel: eeprom@52 {
+                compatible = "i2c-eeprom", "atmel,24c64";
+ 		pagesize = <32>;
+		address-width = <16>;
+ 		reg = <0x52>;
+        };
+};

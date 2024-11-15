@@ -1,0 +1,57 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2024 SomLabs Astar
+ *
+ */
+
+/ {
+        sound {
+                /* generic sound card */
+                compatible = "simple-audio-card";
+                simple-audio-card,name = "nau8822";
+
+                simple-audio-card,widgets =
+                        "Headphones", "Headphones",
+                        "Line Out", "Line Out",
+                        "Speaker", "Speaker",
+                        "Microphone", "Mic In";
+                simple-audio-card,routing =
+                        "Headphones", "LHP",
+                        "Headphones", "RHP",
+                        "Speaker", "LSPK",
+                        "Speaker", "RSPK",
+                        "Line Out", "AUXOUT1",
+                        "Line Out", "AUXOUT2",
+                        "LMICP",    "Mic In",
+                        "RMICP",    "Mic In";
+		
+                //nuvoton,spk-btl;
+
+                simple-audio-card,format = "i2s";
+                simple-audio-card,bitclock-master = <&dailink_master>;
+                simple-audio-card,frame-master = <&dailink_master>;
+
+                simple-audio-card,cpu {
+                        sound-dai = <&sai3>;
+                };
+
+                dailink_master: simple-audio-card,codec {
+                        sound-dai = <&codec_nau8822>;
+                        //clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI3_MCLK1>;
+                        clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI3_MCLK1>;
+                        clock-names = "mclk";
+                };
+        };
+};
+
+&i2c3 {
+        codec_nau8822: nau8822@1a {
+                compatible = "nuvoton,nau8822";
+                reg = <0x1a>;
+                clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIOMIX_SAI3_MCLK1>;
+                clock-names = "mclk"; 
+                nuvoton,spk-btl;
+                #sound-dai-cells = <0>;
+                status = "okay";
+        };
+};

@@ -85,8 +85,8 @@
 &flexspi {
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_flexspi0>;
-        status = "okay";
-
+        status = "disabled";
+/*
         flash0: w25q128fwpig@0 {
                 reg = <0>;
                 #address-cells = <1>;
@@ -96,6 +96,7 @@
                 spi-tx-bus-width = <1>;
                 spi-rx-bus-width = <4>;
         };
+*/
 };
 
 &flexcan1 {
@@ -683,15 +684,5 @@
 &flexspi {
         pinctrl-names = "default";
         pinctrl-0 = <&pinctrl_flexspi0>;
-        status = "okay";
-
-        flash0: w25q128fwpig@0 {
-                reg = <0>;
-                #address-cells = <1>;
-                #size-cells = <1>;
-                compatible = "jedec,spi-nor";
-                spi-max-frequency = <80000000>;
-                spi-tx-bus-width = <1>;
-                spi-rx-bus-width = <4>;
-        };
+        status = "disabled";
 };

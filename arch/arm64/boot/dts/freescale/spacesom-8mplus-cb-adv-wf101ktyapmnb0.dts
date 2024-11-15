@@ -1,0 +1,12 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2022 SomLabs Astar
+ *
+ */
+
+#include "spacesom-8mplus-cb-adv.dtsi"
+#include "spacesom-8mplus-cb-panel-wf101ktyapmnb0.dtsi"
+
+/ {
+        model = "SoMLabs SpaceSOM i.MX8MPlus CB-ADV wf101ktyapmnb0";
+};

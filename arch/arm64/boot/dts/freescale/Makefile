@@ -90,7 +90,10 @@ dtb-$(CONFIG_ARCH_MXC) += visionsom-8mm-cb-std.dtb \
 			  visionsom-8mm-cb-adv-lvds-rvt70hslnwc00-b.dtb \
 			  titansbc-8mmini.dtb
 
-dtb-$(CONFIG_ARCH_MXC) += spacesom-8mplus-cb-adv.dtb
+dtb-$(CONFIG_ARCH_MXC) += spacesom-8mplus-cb-adv.dtb \
+			  spacesom-8mplus-cb-gcsomtst3-dlc1010ebp28mf.dtb \
+			  spacesom-8mplus-cb-gcsomtst3-wf101ktyapmnb0.dtb \
+			  spacesom-8mplus-cb-adv-wf101ktyapmnb0.dtb
 
 dtb-$(CONFIG_ARCH_MXC) += imx8mm-evk-ak4497.dtb imx8mm-evk-ak5558.dtb imx8mm-evk-audio-tdm.dtb
 dtb-$(CONFIG_ARCH_MXC) += imx8mm-evk-8mic-revE.dtb imx8mm-evk-8mic-swpdm.dtb \
